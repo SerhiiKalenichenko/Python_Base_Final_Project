@@ -1,0 +1,10 @@
+List of available commands:
+add - adds contact, example of input: add [contact name] [phone]
+change - changes existing contact, example of input: change [contact name] [phone]
+phone - returns phone number by name, example of input: phone [contact name]
+all - shows all added contacts, example of input: all
+hello - says hello, example of input: hello
+add-birthday - adds birthday date to the selected contact in format DD.MM.YYYY, example of input: add-birthday [contact name] [birthday]
+show-birthday - shows birthday date of the selected contact, example of input: show-birthday [contact name]
+birthdays - shows all contacts that have birthdays during next week, example of input: birthdays
+close / exit - finish dialog with assistant bot
