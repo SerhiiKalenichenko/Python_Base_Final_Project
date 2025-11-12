@@ -45,6 +45,10 @@ def main():
                     print(command_processor.find_contact_by_name(args, book))
                 case CommandEnum.FIND_CONTACT_BY_EMAIL.value:
                     print(command_processor.find_contact_by_email(args, book))
+                case CommandEnum.ADD_ADDRESS.value:
+                    print(command_processor.add_address(args, book))
+                case CommandEnum.REMOVE_ADDRESS.value:
+                    print(command_processor.remove_address(args, book))
                 case _: 
                     print("Invalid command.")
                     input_command = input("Would you like to see all commands list? Y/N >>> ").strip().lower()
