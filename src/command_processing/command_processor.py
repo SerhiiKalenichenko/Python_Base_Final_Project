@@ -127,11 +127,12 @@ def find_contact_by_email(args, book: AddressBook) -> list[Record]:
 @input_error
 def add_address(args, book: AddressBook):
     name = args[0]
-    address = args[1]
+    address = args[1::]
+    address_str = ' '.join(address)
     book_record = book.find_by_name(name)
     is_record_found(book_record)
     result_message = "Address added." if book_record.address is None else "Address updated."
-    book_record.add_address(address)
+    book_record.add_address(address_str)
     return result_message
 
 @input_error
