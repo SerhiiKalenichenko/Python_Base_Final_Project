@@ -2,7 +2,6 @@ import pytest
 from src.data_models.address_book import AddressBook
 from src.data_models.address_book_record import Record
 
-
 def test_add_record_creates_entry():
     book = AddressBook()
     record = Record("Serhii")
