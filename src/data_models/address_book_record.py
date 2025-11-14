@@ -47,7 +47,7 @@ class Record:
     def add_email(self, email: Email):
         if email in self.emails:
             raise ValueError(f"Email {email} already exists for {self.name}")
-        self.emails.append(Email(email))
+        self.emails.append(email)
 
     def add_address(self, address: str):
         if not address:

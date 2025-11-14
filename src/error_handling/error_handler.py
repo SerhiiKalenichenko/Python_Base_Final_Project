@@ -1,13 +1,26 @@
+from rich.text import Text
+
+
 def input_error(func):
+
+    def red(error: str) -> Text:
+        return Text(error, style="bold red")
+
+    def green(success) -> Text:
+        if success is str:
+            return Text(success, style="green")
+        else:
+            return success
+
     def inner(*args, **kwargs):
         try:
-            return func(*args, **kwargs)
+            return green(func(*args, **kwargs))
         except KeyError as error:
-            return error.args[0] if error.args else "Error accessing contacts"
+            return red(error.args[0] if error.args else "Error accessing contacts")
         except ValueError as error:
-            return error.args[0] if error.args else "Wrong format of input data"
+            return red(error.args[0] if error.args else "Wrong format of input data")
         except IndexError as error:
-            return "Not enough count of arguments"
+            return red("Not enough count of arguments")
         except FileNotFoundError as error:
-            return error.args[0] if error.args else "Help file not found"
+            return red(error.args[0] if error.args else "Help file not found")
     return inner

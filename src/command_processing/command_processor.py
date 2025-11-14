@@ -1,3 +1,6 @@
+from rich.table import Table
+
+from src.data_models.record_fields import ListField
 from src.error_handling.error_handler import input_error
 from src.data_models.address_book import AddressBook
 from src.data_models.address_book_record import Record, Email
@@ -67,7 +70,21 @@ def show_emails(args, book: AddressBook):
 
 @input_error
 def show_all(book: AddressBook):
-    return str(book);
+    table = Table(title="Address Book", show_lines=True, show_header=True)
+    table.add_column("Name")
+    table.add_column("Email")
+    table.add_column("Phone")
+    table.add_column("Birthday")
+    table.add_column("Address")
+
+    for record in book.values():
+        table.add_row(record.name,
+            ListField(record.emails),
+            ListField(record.phones),
+            record.birthday,
+            record.address)
+
+    return table
 
 @input_error
 def add_birthday(args, book: AddressBook):

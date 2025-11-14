@@ -7,7 +7,19 @@ from prompt_toolkit.layout import Layout, HSplit
 from collections import UserDict
 from typing import Set
 
+from rich.text import Text
+
 from src.data_models.record_fields import Field
+
+class DateField(Field):
+    def __init__(self, date):
+        super().__init__(date)
+
+    def __str__(self):
+        return self.value.strftime("%Y-%m-%d %H:%M")
+
+    def __rich__(self):
+        return Text(self.__str__(), style="dodger_blue2")
 
 class Tag(Field):
     def __init__(self, tag):
@@ -17,13 +29,13 @@ class Note(Field):
     def __init__(self, title):
         super().__init__(title)
         self.content = ""
-        self.created_at = datetime.datetime.now()
+        self.created_at = DateField(datetime.datetime.now())
         self.updated_at = self.created_at
         self.tags: Set[Tag] = set()
 
     def edit(self, new_content):
         self.content = new_content
-        self.updated_at = datetime.datetime.now()
+        self.updated_at = DateField(datetime.datetime.now())
 
     def add_tag(self, tag: Tag):
         self.tags.add(tag)
@@ -34,8 +46,8 @@ class Note(Field):
     def __str__(self):
         return (f"Title: '{self.value}' "
                 f"Tags: {', '.join(t.value for t in self.tags)} "
-                f"created at: {self.created_at:%Y-%m-%d %H:%M} "
-                f"updated at: {self.updated_at:%Y-%m-%d %H:%M}")
+                f"created at: {self.created_at} "
+                f"updated at: {self.updated_at}")
 
 
 class NotesManager(UserDict):
@@ -57,7 +69,7 @@ class NotesManager(UserDict):
     def search(self, tag: str):
         for nid, note in self.notes.items():
             if Tag(tag) in note.tags:
-                yield f"{nid}: {note.value} (updated {note.updated_at:%Y-%m-%d %H:%M})"
+                yield nid, note
 
     def delete(self, note_id: int):
         if note_id in self.notes:
