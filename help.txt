@@ -5,11 +5,20 @@ remove - removes contact from the book, example of input: remove [contact name]
 find-by-email - finds and show all information about the contact by email, example of input: find-by-email [email]
 find-by-name - finds and show all information about the contact by name, example of input: find-by-name [contact name]
 phone - returns phone number by name, example of input: phone [contact name]
-add-email - add email to existing contact, example of input: add-email [contact name] [email]
+add-email - adds email to existing contact, example of input: add-email [contact name] [email]
 email - returns email by name, example of input: email [contact name]
+add-address - adds address to existing contact or update it if address already exists, example of input: add-address [contact name] [address]
+remove-address - removes address from contact, example of input: remove-address [contact name]
 all - shows all added contacts, example of input: all
 hello - says hello, example of input: hello
 add-birthday - adds birthday date to the selected contact in format DD.MM.YYYY, example of input: add-birthday [contact name] [birthday]
 show-birthday - shows birthday date of the selected contact, example of input: show-birthday [contact name]
 birthdays - shows all contacts that have birthdays during next week, example of input: birthdays
+add-note - adds a note, example of input: add [note title]
+edit-note - edit an existing note, example of input: edit-note [note ID]
+all-notes - shows all note titles by ID, example of input: all-notes
+add-tag - add a tag to a note, example of input: add-tag [note ID] [tag]
+remove-tag - remove a tag from a note, example of input: remove-tag [note ID] [tag]
+find-notes - find notes by tag, example of input: find-notes [tag]
+remove-note - delete a note, example of input: delete-note [note ID]
 close / exit - finish dialog with assistant bot
