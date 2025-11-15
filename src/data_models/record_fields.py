@@ -1,12 +1,18 @@
 import re
 from datetime import datetime
 
+from rich.table import Table
+from rich.text import Text
+
 MAX_LEN_PHONE_NUMBER = 10
 email_regex = r'^[\w\.-]+@[\w\.-]+\.\w+$'
 
 class Field:
     def __init__(self, value):
         self.value = value
+
+    def __rich__(self):
+        return Text(str(self.value), style="medium_spring_green")
 
     def __str__(self):
         return str(self.value)
@@ -19,12 +25,22 @@ class Field:
     def __hash__(self):
         return hash(self.value)
 
+class ListField(Field):
+    def __rich__(self):
+        sub = Table(show_header=False, box=None, padding=0)
+        for item in self.value:
+            sub.add_row(item)
+        return sub
 
 class Name(Field):
     def __init__(self, value):
         if not value:
             raise ValueError("Name cannot be empty")
         super().__init__(value)
+
+    def __rich__(self):
+        return Text(self.value, style="bold green")
+
 
 class Phone(Field):
     def __init__(self, value):
@@ -35,8 +51,8 @@ class Phone(Field):
     def is_phone_number_valid(self, phone_number):
         return phone_number.isdigit() and len(phone_number) == MAX_LEN_PHONE_NUMBER
         
-    def __eq__(self, value):
-        return self.value == value
+    def __rich__(self):
+        return Text(self.value, style="magenta3")
 
 class Email(Field):
     def __init__(self, email: str):
@@ -50,9 +66,6 @@ class Email(Field):
     def update(self, email):
         self.is_email_valid(email)
         self.value = email
-
-    def __eq__(self, value):
-        return self.value == value
 
 class Birthday(Field):
     def __init__(self, value):
