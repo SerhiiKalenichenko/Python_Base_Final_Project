@@ -71,14 +71,23 @@ def main():
                     print(command_processor.show_birthday(args, book))
                 case CommandEnum.BIRTHDAYS.value:
                     print(command_processor.birthdays(book))
+
                 case CommandEnum.ADD_NOTE.value:
                     print(notes_processor.add_note(args, notes))
-                #case CommandEnum.EDIT_NOTE.value:
-                    #print(notes_processor.edit_note(args, notes))
+                case CommandEnum.EDIT_NOTE.value:
+                    print(notes_processor.edit_note(args, notes))
                 case CommandEnum.DELETE_NOTE.value:
                     print(notes_processor.delete_note(args, notes))
                 case CommandEnum.LIST_NOTES.value:
                     print(notes_processor.list_notes(notes))
+
+                case CommandEnum.ADD_TAG.value:
+                    print(notes_processor.add_tag(args,notes))
+                case CommandEnum.REMOVE_TAG.value:
+                    print(notes_processor.remove_tag(args,notes))
+                case CommandEnum.SEARCH_NOTES.value:
+                    print(notes_processor.search_notes(args, notes))
+
                 case CommandEnum.REMOVE_CONTACT.value:
                     print(command_processor.remove_contact(args, book))
                 case CommandEnum.FIND_CONTACT_BY_NAME.value:
