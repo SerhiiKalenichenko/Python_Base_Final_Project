@@ -11,9 +11,9 @@ from rich.text import Text
 
 from src.data_models.record_fields import Field
 
-class DateField(Field):
-    def __init__(self, date):
-        super().__init__(date)
+class DateField():
+    def __init__(self, date : datetime.datetime):
+        self.value = date
 
     def __str__(self):
         return self.value.strftime("%Y-%m-%d %H:%M")
@@ -68,12 +68,10 @@ class NotesManager():
             match sort_by:
                 case SortNotesParamEnum.SORT_BY_ID.value:
                     notes_with_tag.sort(key=lambda x: x[0], reverse=True)
-                case SortNotesParamEnum.SORT_BY_TITLE.value:
-                    notes_with_tag.sort(key=lambda x: Note(x[1]).value, reverse=True)
                 case SortNotesParamEnum.SORT_BY_CREATED_DATE.value:
-                    notes_with_tag.sort(key=lambda x: Note(x[1]).created_at, reverse=True)
+                     notes_with_tag.sort(key=lambda x: x[1].created_at.value, reverse=True)
                 case SortNotesParamEnum.SORT_BY_UPDATED_DATE.value:
-                    notes_with_tag.sort(key=lambda x: Note(x[1]).updated_at, reverse=True)
+                    notes_with_tag.sort(key=lambda x: x[1].updated_at.value, reverse=True)
         yield from notes_with_tag
 
     def delete(self, note_id: int):

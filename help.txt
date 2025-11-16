@@ -39,7 +39,7 @@ edit-note  - edits an existing note, example of input: edit-note [note ID]
 all-notes  - shows all note titles by ID, example of input: all-notes
 add-tag    - adds a tag to a note, example of input: add-tag [note ID] [tag]
 remove-tag - removes a tag from a note, example of input: remove-tag [note ID] [tag]
-find-notes - finds notes by tag and sorts them by one of params (id, title, created_at, updated_at),
+find-notes - finds notes by tag and sorts them by one of params (id, created_at, updated_at) in desc order,
              example of input: find-notes [tag] [sort param]
 remove-note - deletes a note, example of input: delete-note [note ID]
 show-note   - shows content of note by note id,
