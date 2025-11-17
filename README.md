@@ -145,9 +145,10 @@ Uninstallation
 --------------
 To remove the program:
    For Windows:
-      py -m pip uninstall personal-assistant
+   py -m pip uninstall personal-assistant
+
    For Mac/Linux:
-      pip uninstall personal-assistant
+   pip uninstall personal-assistant
 
 Additional Notes
 ----------------
