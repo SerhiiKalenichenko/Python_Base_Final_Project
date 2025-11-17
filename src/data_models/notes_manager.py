@@ -12,7 +12,7 @@ from rich.text import Text
 from src.data_models.record_fields import Field
 
 class DateField():
-    def __init__(self, date : datetime.datetime):
+    def __init__(self, date: datetime.datetime):
         self.value = date
 
     def __str__(self):
@@ -36,7 +36,7 @@ class Note(Field):
     def add_tag(self, tag: str):
         self.tags.add(tag)
 
-    def remove_tag(self, tag : str):
+    def remove_tag(self, tag: str):
         if tag in self.tags:
             self.tags.remove(tag)
         else:
@@ -81,7 +81,7 @@ class NotesManager():
         else:
             raise ValueError(messages.NOTE_NOT_FOUND_MESSAGE)
 
-    def edit_in_editor(self, note_id):
+    def edit_in_editor(self, note_id: int):
         note = self.get(note_id)
         if not note:
             raise ValueError(messages.NOTE_NOT_FOUND_MESSAGE)

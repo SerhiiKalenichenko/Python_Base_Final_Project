@@ -46,7 +46,7 @@ def process_contact_command(command: str, args: list[str], book: AddressBook):
         case ContactCommandEnum.REMOVE_CONTACT_ADDRESS.value:
             return contact_command_processor.remove_address(args, book)
 
-def process_notes_command(command: str, args: list[str], notes : NotesManager):
+def process_notes_command(command: str, args: list[str], notes: NotesManager):
         match command:
             case NotesCommandEnum.ADD_NOTE.value:
                 return notes_command_processor.add_note(args, notes)
@@ -65,7 +65,7 @@ def process_notes_command(command: str, args: list[str], notes : NotesManager):
             case NotesCommandEnum.SHOW_NOTE_CONTENT.value:
                 return notes_command_processor.show_note_content(args, notes)
 
-def process_command(command: str, args: list[str], notes : NotesManager, book : AddressBook):
+def process_command(command: str, args: list[str], notes: NotesManager, book: AddressBook):
     if command in [member.value for member in ContactCommandEnum]:
         return process_contact_command(command, args, book)
     if command in [member.value for member in NotesCommandEnum]:

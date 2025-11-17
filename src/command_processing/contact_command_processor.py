@@ -54,7 +54,7 @@ def show_phones(args, book: AddressBook):
     return phone_numbers
 
 @input_error
-def remove_phone(args, book):
+def remove_phone(args, book: AddressBook):
     name = args[0]
     phone = args[1]
     book_record = book.find_by_name(name)
