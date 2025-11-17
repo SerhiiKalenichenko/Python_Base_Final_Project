@@ -1,4 +1,3 @@
-from prompt_toolkit import PromptSession
 from prompt_toolkit.completion import Completer
 from prompt_toolkit.document import Document
 

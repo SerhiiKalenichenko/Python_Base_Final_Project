@@ -79,9 +79,7 @@ class Birthday(Field):
     def parse_birthday(self, value):
         if not isinstance(value, str):
             raise ValueError(messages.INVALID_BIRTHDAY_FORMAT)
-        
         birthday_date = datetime.strptime(value, "%d.%m.%Y").date()
-
         if birthday_date > datetime.now().date():
             raise ValueError(messages.BIRTHDAY_IN_FUTURE)
 

@@ -4,12 +4,14 @@ ADDRESS_BOOK_COLUMNS = [
     "Email",
     "Phone",
     "Birthday",
+    "Current Age",
     "Address"
 ]
 UPCOMMING_BIRTHDAY_HEADER = "Upcoming birthdays:"
 UPCOMMING_BIRTHDAY_COLUMNS = [
     "Name",
-    "Birthday Date"
+    "Birthday Date",
+    "Upcoming Age"
 ]
 SINGLE_CONTACT_TABLE_HEADER = "Contacts found:"
 NOTES_TABLE_HEADER = "Note Book:"

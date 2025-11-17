@@ -26,6 +26,7 @@ def add_single_book_record(record : Record, table : Table):
                       ListField(record.emails),
                       ListField(record.phones),
                       record.birthday,
+                      str(record.birthday.age()) if record.birthday else "",
                       record.address)
 
 def create_address_book_table(book: AddressBook) -> Table:
@@ -38,7 +39,8 @@ def create_birthday_table(upcomming_birthdays: dict) -> Table:
     table = create_table_header(table_columns.UPCOMMING_BIRTHDAY_COLUMNS, table_columns.UPCOMMING_BIRTHDAY_HEADER)
     for record in upcomming_birthdays:
         table.add_row(record["name"],
-                      record["congratulation_date"])
+                      record["congratulation_date"],
+                      str(record["age"]))
     return table
 
 def create_find_contact_table(records : list[Record]) -> Table:

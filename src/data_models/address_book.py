@@ -40,9 +40,13 @@ class AddressBook(UserDict):
 
                 difference = next_birthday_date - todays_date
                 if difference.days <= days:
-                    user_congrats = {"name": record.name.value, "congratulation_date": next_birthday_date.strftime("%d.%m.%Y")}
+                    user_congrats = {
+                        "name": record.name.value,
+                        "congratulation_date": next_birthday_date.strftime("%d.%m.%Y"),
+                        "age": record.birthday.age() + 1 # it's upcoming age, not current
+                        }
                     upcoming_birthdays.append(user_congrats)
-        
+
         return upcoming_birthdays
 
     def find_by_name(self, name) -> Record:

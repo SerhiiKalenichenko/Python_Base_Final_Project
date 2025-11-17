@@ -53,9 +53,11 @@ def main():
 
                 console.print(process_command(command, args, notes, book))
             except Exception as error:
-                console.print(f"{style_consts.ERROR_TEXT_COLOR}{messages.UNEXPECTED_ERROR_MESSAGE}", error)
+                console.print(f"{style_consts.ERROR_TEXT_COLOR}{messages.UNEXPECTED_ERROR_MESSAGE}",
+                              f"{style_consts.ERROR_TEXT_COLOR}{error}")
     except:
-        console.print(f"{style_consts.ERROR_TEXT_COLOR}{messages.UNEXPECTED_ERROR_MESSAGE}", error)
+        console.print(f"{style_consts.ERROR_TEXT_COLOR}{messages.UNEXPECTED_ERROR_MESSAGE}",
+                      f"{style_consts.ERROR_TEXT_COLOR}{error}")
 
 if __name__ == "__main__":
     main()
