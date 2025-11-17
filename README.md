@@ -71,7 +71,7 @@ Step 3: Install the Program
 
 2. Run the installation command:
 
-   For Windows (tested and working):
+   For Windows:
    py -m pip install -e .
 
    For Mac/Linux:
@@ -144,8 +144,10 @@ If you continue to experience problems:
 Uninstallation
 --------------
 To remove the program:
-
-pip uninstall personal-assistant
+   For Windows:
+      py -m pip uninstall personal-assistant
+   For Mac/Linux:
+      pip uninstall personal-assistant
 
 Additional Notes
 ----------------
